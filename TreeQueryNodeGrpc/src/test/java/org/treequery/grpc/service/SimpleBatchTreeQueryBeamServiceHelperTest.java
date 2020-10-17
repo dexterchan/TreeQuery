@@ -11,9 +11,9 @@ import org.treequery.beam.cache.BeamCacheOutputBuilder;
 import org.treequery.config.TreeQuerySetting;
 import org.treequery.discoveryservicestatic.DiscoveryServiceInterface;
 import org.treequery.grpc.utils.TestDataAgent;
+import org.treequery.service.LocalTreeQueryClusterRunner;
 import org.treequery.service.PreprocessInput;
 import org.treequery.service.ReturnResult;
-import org.treequery.service.TreeQueryClusterRunnerImpl;
 import org.treequery.service.proxy.LocalDummyTreeQueryClusterRunnerProxy;
 import org.treequery.service.proxy.TreeQueryClusterRunnerProxyInterface;
 import org.treequery.utils.BasicAvroSchemaHelperImpl;
@@ -73,13 +73,13 @@ class SimpleBatchTreeQueryBeamServiceHelperTest {
                                     treeQuerySetting.getServiceDiscoveryPort()
                             ).build();
 
-                            return TreeQueryClusterRunnerImpl.builder()
+                            return  LocalTreeQueryClusterRunner.builder()
+                                    .avroSchemaHelper(avroSchemaHelper)
                                     .beamCacheOutputBuilder(BeamCacheOutputBuilder.builder()
                                             .treeQuerySetting(treeQuerySetting)
                                             .build())
-                                    .avroSchemaHelper(avroSchemaHelper)
-                                    .treeQuerySetting(remoteDummyTreeQuerySetting)
                                     .discoveryServiceInterface(discoveryServiceInterface)
+                                    .treeQuerySetting(remoteDummyTreeQuerySetting)
                                     .cacheInputInterface(cacheInputInterface)
                                     .build();
                         }

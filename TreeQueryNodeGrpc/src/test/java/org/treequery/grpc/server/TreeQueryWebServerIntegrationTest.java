@@ -21,7 +21,7 @@ import org.treequery.grpc.utils.TestDataAgent;
 import org.treequery.grpc.utils.WebServerFactory;
 import org.treequery.grpc.utils.proxy.GrpcCacheInputInterfaceProxyFactory;
 import org.treequery.proto.TreeQueryRequest;
-import org.treequery.service.TreeQueryClusterRunnerImpl;
+import org.treequery.service.LocalTreeQueryClusterRunner;
 import org.treequery.service.proxy.GrpcTreeQueryClusterRunnerProxy;
 import org.treequery.service.proxy.LocalDummyTreeQueryClusterRunnerProxy;
 import org.treequery.service.proxy.TreeQueryClusterRunnerProxyInterface;
@@ -107,14 +107,15 @@ class TreeQueryWebServerIntegrationTest {
                                     treeQuerySettingA.getServiceDiscoveryHostName(),
                                     treeQuerySettingA.getServiceDiscoveryPort()
                             ).build();
-                            return TreeQueryClusterRunnerImpl.builder()
+
+                            return  LocalTreeQueryClusterRunner.builder()
+                                    .avroSchemaHelper(avroSchemaHelper)
                                     .beamCacheOutputBuilder(BeamCacheOutputBuilder.builder()
                                             .treeQuerySetting(treeQuerySettingA)
                                             .build())
-                                    .avroSchemaHelper(avroSchemaHelper)
+                                    .discoveryServiceInterface(discoveryServiceInterface)
                                     .treeQuerySetting(remoteDummyTreeQuerySetting)
                                     .cacheInputInterface(cacheInputInterface)
-                                    .discoveryServiceInterface(discoveryServiceInterface)
                                     .build();
                         }
                 )

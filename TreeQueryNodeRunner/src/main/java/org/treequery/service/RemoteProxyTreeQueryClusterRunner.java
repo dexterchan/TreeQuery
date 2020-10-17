@@ -50,19 +50,6 @@ public class RemoteProxyTreeQueryClusterRunner implements TreeQueryClusterRunner
                     StatusTreeQueryCluster.QueryTypeEnum.FAIL
             );
         }
-        /*
-        try {
-            treeQueryClusterRunnerProxyInterface.runQueryTreeNetwork(
-                    node, statusCallback
-            );
-        }catch (Throwable th){
-            log.error(th.getMessage());
-            AppExceptionHandler.feedBackException2Client(
-                    statusCallback, node,
-                    th.getMessage(),
-                    StatusTreeQueryCluster.QueryTypeEnum.FAIL
-            );
-        }*/
     }
 
     @Override

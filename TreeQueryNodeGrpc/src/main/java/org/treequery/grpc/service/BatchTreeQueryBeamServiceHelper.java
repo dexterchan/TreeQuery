@@ -18,6 +18,7 @@ import org.treequery.utils.AvroSchemaHelper;
 import org.treequery.model.Node;
 import org.treequery.proto.TreeQueryRequest;
 import org.treequery.utils.AsyncRunHelper;
+import org.treequery.utils.EventBus.BasicTreeNodeEventBusTrafficLightImpl;
 import org.treequery.utils.JsonInstructionHelper;
 import org.treequery.beam.cache.CacheInputInterface;
 
@@ -56,19 +57,24 @@ public class BatchTreeQueryBeamServiceHelper implements TreeQueryBeamService {
     }
 
     public void init(){
-        treeQueryClusterService =  BatchAsyncTreeQueryClusterService.builder()
-                .treeQueryClusterRunnerFactory(()->
-                        TreeQueryClusterRunnerImpl.builder()
-                            .beamCacheOutputBuilder(BeamCacheOutputBuilder.builder()
-                                    .treeQuerySetting(this.treeQuerySetting)
-                                    .build())
-                            .avroSchemaHelper(avroSchemaHelper)
-                                .treeQuerySetting(treeQuerySetting)
-                            .treeQueryClusterRunnerProxyInterface(treeQueryClusterRunnerProxyInterface)
-                            .discoveryServiceInterface(discoveryServiceInterface)
-                            .cacheInputInterface(cacheInputInterface)
-                            .build())
+        TreeQueryClusterRunner localTreeQueryClusterRunner =  LocalTreeQueryClusterRunner.builder()
+                .avroSchemaHelper(avroSchemaHelper)
+                .beamCacheOutputBuilder(this.beamCacheOutputBuilder)
+                .discoveryServiceInterface(discoveryServiceInterface)
+                .treeQuerySetting(treeQuerySetting)
+                .cacheInputInterface(cacheInputInterface)
                 .build();
+
+        TreeQueryClusterRunner remoteTreeQueryClusterRunner =  RemoteProxyTreeQueryClusterRunner.builder()
+                .treeQueryClusterRunnerProxyInterface(treeQueryClusterRunnerProxyInterface)
+                .build();
+        treeQueryClusterService =  BatchTreeQueryClusterServiceEventImpl.builder()
+                .localTreeQueryClusterRunner(localTreeQueryClusterRunner)
+                .remoteTreeQueryClusterRunner(remoteTreeQueryClusterRunner)
+                .treeQuerySetting(treeQuerySetting)
+                .discoveryServiceInterface(discoveryServiceInterface)
+                .eventTreeNodeEventBusTrafficLight(new BasicTreeNodeEventBusTrafficLightImpl())
+        .build();
     }
     @Override
     public PreprocessInput preprocess(String jsonInput){

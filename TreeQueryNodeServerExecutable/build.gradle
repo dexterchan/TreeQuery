@@ -43,6 +43,7 @@ dependencies {
 
     compile group: 'commons-cli', name: 'commons-cli', version: "$cliVersion"
 
+    compile 'io.confluent:kafka-avro-serializer:5.3.2'
 
     testCompile group: 'org.assertj', name: 'assertj-core', version: "$assetjVersion"
     testCompile group: 'org.mockito', name: 'mockito-core', version: "$mockitVersion"
