@@ -34,7 +34,7 @@ import java.util.function.Consumer;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Tag("integration")
+//@Tag("integration")
 public class ClusterBatchTreeQueryBeamServiceHelperTest {
     final static int PORT = 9009;//ThreadLocalRandom.current().nextInt(9000,9999);
     final static String HOSTNAME = "localhost";

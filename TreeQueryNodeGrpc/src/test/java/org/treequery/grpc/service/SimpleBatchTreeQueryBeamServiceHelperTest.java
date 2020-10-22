@@ -96,6 +96,8 @@ class SimpleBatchTreeQueryBeamServiceHelperTest {
 
     @Test
     void throwIllegalArugmentExceptionIfBlankProxy(){
+        String AvroTree = "SimpleJoinCluster.json";
+        jsonString = TestDataAgent.prepareNodeFromJsonInstruction(AvroTree);
         batchTreeQueryBeamServiceHelper = BatchTreeQueryBeamServiceHelper.builder()
                 .avroSchemaHelper(avroSchemaHelper)
                 .discoveryServiceInterface(discoveryServiceInterface)
@@ -116,6 +118,7 @@ class SimpleBatchTreeQueryBeamServiceHelperTest {
                             genericRecordConsumer);
                 //}
                 //);
+        log.debug(returnResult.getStatusTreeQueryCluster().toString());
         assertEquals(StatusTreeQueryCluster.QueryTypeEnum.SYSTEMERROR,returnResult.getStatusTreeQueryCluster().getStatus());
 
     }

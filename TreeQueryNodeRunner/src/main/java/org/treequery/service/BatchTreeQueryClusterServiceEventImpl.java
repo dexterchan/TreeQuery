@@ -74,7 +74,7 @@ public class BatchTreeQueryClusterServiceEventImpl implements TreeQueryClusterSe
 
         String uniqueId = iterateNodeListToPublishEventsHelper(
              StatusCallback, clusterDependencyGraph, runNode,
-                Optional.ofNullable(null)
+                Optional.empty()
         );
 
 

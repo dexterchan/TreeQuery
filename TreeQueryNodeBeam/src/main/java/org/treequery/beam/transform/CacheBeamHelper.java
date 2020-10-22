@@ -56,6 +56,7 @@ public class CacheBeamHelper implements NodeBeamHelper {
             log.error(che.getMessage());
             throw new CacheNotFoundException(String.format("Failed to retrieve cache for %s(%s)", node.getName() ,identifier));
         }
+
         PCollection<String> identifierCollection = pipeline.apply(Create.of(identifier));
         PCollection<GenericRecord> genericRecordPCollection = identifierCollection.apply(
             new CacheReadTransform(cacheInputInterface, schema)

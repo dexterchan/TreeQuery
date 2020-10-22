@@ -65,7 +65,7 @@ public class TreeNodeEventSubscriber implements Flow.Subscriber<TreeNodeEvent>{
                     item.getStatusCallback(),
                     calcNode,
                     th.getMessage(),
-                    StatusTreeQueryCluster.QueryTypeEnum.FAIL
+                    StatusTreeQueryCluster.QueryTypeEnum.SYSTEMERROR
             );
             throw new RuntimeException(th.getMessage());
         }

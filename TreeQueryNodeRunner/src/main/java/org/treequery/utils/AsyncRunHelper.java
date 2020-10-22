@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class AsyncRunHelper {
     private final Object __object;
     private final CountDownLatch countDownLatch;
-    private final long WAIT_MS = Duration.standardMinutes(1).getMillis();
+    private final long WAIT_MS = Duration.standardMinutes(30).getMillis();
     private StatusTreeQueryCluster status;
 
     @Getter
