@@ -1,6 +1,7 @@
 package org.treequery.grpc.hostutils;
 
-import com.google.api.client.util.Lists;
+
+import com.google.common.collect.Lists;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 

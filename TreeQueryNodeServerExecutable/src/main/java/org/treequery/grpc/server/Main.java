@@ -1,6 +1,7 @@
 package org.treequery.grpc.server;
 
 import lombok.extern.slf4j.Slf4j;
+/*
 import org.apache.commons.cli.*;
 import org.treequery.cluster.Cluster;
 import org.treequery.config.TreeQuerySetting;
@@ -15,10 +16,13 @@ import org.treequery.service.proxy.TreeQueryClusterRunnerProxyInterface;
 import org.treequery.utils.DatabaseSettingHelper;
 import org.treequery.utils.TreeQuerySettingHelper;
 
+ */
+
 import java.io.IOException;
 
 @Slf4j
 public class Main {
+    /*
     static TreeQueryRequest.RunMode RUNMODE = TreeQueryRequest.RunMode.DIRECT;
     static boolean RENEW_CACHE = false;
 
@@ -88,6 +92,6 @@ public class Main {
         webServer.start();
         webServer.blockUntilShutdown();
     }
-
+*/
 
 }

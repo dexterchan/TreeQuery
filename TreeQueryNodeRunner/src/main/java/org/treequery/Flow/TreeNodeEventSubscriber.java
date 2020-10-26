@@ -53,7 +53,7 @@ public class TreeNodeEventSubscriber implements Flow.Subscriber<TreeNodeEvent>{
                             AppExceptionHandler.feedBackException2Client(
                                     item.getStatusCallback(),
                                     calcNode,
-                                    errMsg,
+                                    ine,
                                     StatusTreeQueryCluster.QueryTypeEnum.SYSTEMERROR
                             );
                             throw new RuntimeException(errMsg);
@@ -64,7 +64,7 @@ public class TreeNodeEventSubscriber implements Flow.Subscriber<TreeNodeEvent>{
             AppExceptionHandler.feedBackException2Client(
                     item.getStatusCallback(),
                     calcNode,
-                    th.getMessage(),
+                    th,
                     StatusTreeQueryCluster.QueryTypeEnum.SYSTEMERROR
             );
             throw new RuntimeException(th.getMessage());

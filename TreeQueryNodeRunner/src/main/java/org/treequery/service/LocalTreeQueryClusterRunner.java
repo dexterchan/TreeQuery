@@ -71,7 +71,7 @@ public class LocalTreeQueryClusterRunner implements TreeQueryClusterRunner{
             log.error(ex.getMessage());
             AppExceptionHandler.feedBackException2Client(
                     statusCallback, node,
-                    ex.getMessage(),
+                    ex,
                     StatusTreeQueryCluster.QueryTypeEnum.FAIL
             );
         }

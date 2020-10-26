@@ -46,7 +46,7 @@ public class RemoteProxyTreeQueryClusterRunner implements TreeQueryClusterRunner
             log.error(fe.getMessage());
             AppExceptionHandler.feedBackException2Client(
                     statusCallback, node,
-                    fe.getMessage(),
+                    fe,
                     StatusTreeQueryCluster.QueryTypeEnum.FAIL
             );
         }

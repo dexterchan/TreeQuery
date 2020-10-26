@@ -10,6 +10,7 @@ import org.treequery.cluster.ClusterDependencyGraph;
 import org.treequery.config.TreeQuerySetting;
 import org.treequery.discoveryservicestatic.DiscoveryServiceInterface;
 import org.treequery.dto.TreeNodeEvent;
+import org.treequery.exception.FailClusterRunException;
 import org.treequery.model.Node;
 import org.treequery.model.QueryTypeEnum;
 import org.treequery.utils.AppExceptionHandler;
@@ -114,7 +115,7 @@ public class BatchTreeQueryClusterServiceEventImpl implements TreeQueryClusterSe
                     ()->{
                         AppExceptionHandler.feedBackException2Client(
                                 StatusCallback, rootNode,
-                                "Fail to get any result",
+                                new IllegalStateException("Fail to get any result"),
                                 StatusTreeQueryCluster.QueryTypeEnum.SYSTEMERROR
                         );
                     }
