@@ -22,13 +22,6 @@ public class LoadLeafNodeHelper implements NodeBeamHelper{
         LoadLeafNode loadLeafNode = (LoadLeafNode) node;
         Schema schema = loadLeafNode.getAvroSchemaObj();
         PCollection<GenericRecord> avroDocuments = pipeline.apply(AvroIO.readGenericRecords(schema).from(loadLeafNode.getSource()));
-        try {
-            /*
-                This code reveal that there is synchronization issue in the async runner
-                WE have to delay the load file to allow SQL, MOngo query to catchup
-             */
-            Thread.sleep((int)(Math.random() * 10000));
-        }catch(Exception e){}
         return avroDocuments;
     }
 }

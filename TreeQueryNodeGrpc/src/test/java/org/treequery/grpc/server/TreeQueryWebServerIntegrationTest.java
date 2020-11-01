@@ -48,7 +48,7 @@ class TreeQueryWebServerIntegrationTest {
     static TreeQueryClusterRunnerProxyInterface treeQueryClusterRunnerProxyInterface;
     static CacheInputInterface cacheInputInterface;
     static TreeQueryRequest.RunMode RUNMODE = TreeQueryRequest.RunMode.DIRECT;
-    static boolean RENEW_CACHE = false;
+    static boolean RENEW_CACHE = true;
 
     @BeforeAll
     static void init() throws Exception{
@@ -128,7 +128,7 @@ class TreeQueryWebServerIntegrationTest {
         discoveryServiceInterface.registerCluster(
                 Cluster.builder().clusterName("B").build(),
                 treeQuerySettingB.getServicehostname(), treeQuerySettingB.getServicePort());
-        String AvroTree = "SimpleJoin.Integration.json";
+        String AvroTree = "SimpleJoinCluster.Integration.json";
         //run3Layers(AvroTree);
         runLayers(AvroTree, 1000,
                 genericRecord -> {
