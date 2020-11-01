@@ -147,7 +147,7 @@
     {
       "name": "LoadBondPrice",
       "description": "Load Bond Price",
-      "action": "LOAD",
+      "action": "QUERY",
       "cluster": "A",
       "queryType" : "SQL",
       "source" : "localmysql",

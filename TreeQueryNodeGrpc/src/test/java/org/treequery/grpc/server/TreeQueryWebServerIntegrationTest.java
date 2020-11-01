@@ -157,7 +157,7 @@ class TreeQueryWebServerIntegrationTest {
         discoveryServiceInterface.registerCluster(
                 Cluster.builder().clusterName("B").build(),
                 treeQuerySettingB.getServicehostname(), treeQuerySettingB.getServicePort());
-        String AvroTree = "TreeQueryInput4.integration.jdbc.json";
+        String AvroTree = "TreeQueryInput4.integration.json";
         runLayers(AvroTree, 3000,
                 record -> {
                     assertThat(record).isNotNull();
@@ -198,6 +198,7 @@ class TreeQueryWebServerIntegrationTest {
                     pageSize,
                     page
             );
+            log.debug(treeQueryResult.getHeader().getErr_msg());
             assertTrue(treeQueryResult.getHeader().isSuccess());
             assertEquals(0, treeQueryResult.getHeader().getErr_code());
             TreeQueryResult.TreeQueryResponseResult treeQueryResponseResult = treeQueryResult.getResult();

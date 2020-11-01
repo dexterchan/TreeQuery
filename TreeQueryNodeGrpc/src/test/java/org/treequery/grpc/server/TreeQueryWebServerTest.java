@@ -240,6 +240,7 @@ class TreeQueryWebServerTest {
                     assertThat(doubleField.getValue()).isCloseTo(refPrice, Offset.offset(0.0001));
                 }
         );
+        log.debug("Finish 4 layers");
     }
 
     void runLayers(String AvroTree, int numberOfRecord,  Consumer<GenericRecord> testValidation){

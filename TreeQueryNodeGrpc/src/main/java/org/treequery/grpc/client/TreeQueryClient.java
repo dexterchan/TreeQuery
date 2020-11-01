@@ -20,6 +20,7 @@ import org.treequery.grpc.model.TreeQueryResult;
 import org.treequery.proto.TreeQueryRequest;
 
 import org.treequery.proto.TreeQueryServiceGrpc;
+import org.treequery.utils.AppExceptionHandler;
 
 
 import java.util.List;
@@ -109,11 +110,13 @@ public class TreeQueryClient {
             treeQueryResult = treeQueryResultBuilder.build();
 
         }catch(StatusRuntimeException se){
-            log.error("unable to connect:"+se.getMessage());
-            throw new FailConnectionException("unable to connect:"+se.getMessage());
+            String errStackTrace = AppExceptionHandler.getStackTrace(se);
+            log.error("unable to connect:"+ errStackTrace);
+            throw new FailConnectionException("unable to connect:"+ errStackTrace);
         } catch(Exception ex){
-            log.warn("failed to do query:"+ex.getMessage());
-            throw new IllegalStateException("failed to do query:"+ex.getMessage());
+            String errStackTrace = AppExceptionHandler.getStackTrace(ex);
+            log.warn("failed to do query:"+errStackTrace);
+            throw new IllegalStateException("failed to do query:"+errStackTrace);
         }
 
         return treeQueryResult;

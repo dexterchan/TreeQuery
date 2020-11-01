@@ -23,7 +23,7 @@ public class AppExceptionHandler {
         );
     }
 
-    static String getStackTrace(Throwable throwable){
+    public static String getStackTrace(Throwable throwable){
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         throwable.printStackTrace(pw);
