@@ -38,6 +38,8 @@ public class TransformNodeFactory implements NodeFactory {
         return node;
     }
 
+
+
     static Node createFlattenNode(JsonNode jsonNode){
         FlattenNode flattenNode = new FlattenNode();
         flattenNode.setBasicValue(jsonNode);
