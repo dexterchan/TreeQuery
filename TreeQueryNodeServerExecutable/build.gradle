@@ -9,30 +9,17 @@ sourceCompatibility = 1.11
 targetCompatibility = 1.11
 
 repositories {
+    jcenter()
     mavenCentral()
-}
-/*
-buildscript {
-    repositories {
-        jcenter()
-    }
-    ext{
-        shadowjarVersion = '4.0.3'
-    }
-    dependencies {
-        classpath "com.github.jengelman.gradle.plugins:shadow:$shadowjarVersion"
+    maven {
+        url "https://packages.confluent.io/maven/"
     }
 }
-apply plugin: 'com.github.johnrengelman.shadow'
-*/
 
 dependencies {
-    /*
-    implementation project(':TreeQueryNodeBeam')
-    implementation project(':TreeQueryNodeProto')
     implementation project(':TreeQueryNodeGrpc')
     implementation project(':TreeQueryDiscoveryServiceStatic')
-*/
+
     implementation project(':TreeQueryStatic')
     compile group: 'com.google.guava', name: 'guava', version: "$guavaVersion"
     compile "org.slf4j:slf4j-api:$slf4jVersion"

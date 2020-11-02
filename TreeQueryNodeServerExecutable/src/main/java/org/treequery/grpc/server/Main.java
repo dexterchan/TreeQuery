@@ -1,14 +1,10 @@
 package org.treequery.grpc.server;
 
 import lombok.extern.slf4j.Slf4j;
-/*
 import org.apache.commons.cli.*;
-import org.treequery.cluster.Cluster;
 import org.treequery.config.TreeQuerySetting;
-
 import org.treequery.discoveryservicestatic.DiscoveryServiceInterface;
 import org.treequery.discoveryservicestatic.client.ServiceDiscoveryClient;
-import org.treequery.discoveryservicestatic.proxy.LocalDummyDiscoveryServiceProxy;
 import org.treequery.grpc.utils.WebServerFactory;
 import org.treequery.proto.TreeQueryRequest;
 import org.treequery.service.proxy.GrpcTreeQueryClusterRunnerProxy;
@@ -16,15 +12,14 @@ import org.treequery.service.proxy.TreeQueryClusterRunnerProxyInterface;
 import org.treequery.utils.DatabaseSettingHelper;
 import org.treequery.utils.TreeQuerySettingHelper;
 
- */
 
 import java.io.IOException;
 
 @Slf4j
 public class Main {
-    /*
+
     static TreeQueryRequest.RunMode RUNMODE = TreeQueryRequest.RunMode.DIRECT;
-    static boolean RENEW_CACHE = false;
+    static boolean RENEW_CACHE = true;
 
 
     private static DiscoveryServiceInterface getDiscoveryServiceProxy(String hostname, int port){
@@ -92,6 +87,6 @@ public class Main {
         webServer.start();
         webServer.blockUntilShutdown();
     }
-*/
+
 
 }
